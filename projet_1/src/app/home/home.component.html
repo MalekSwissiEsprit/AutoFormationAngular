@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+
+
+<p [style]="fonty"> BONJOUR  </p>
+<p [style.color]="titlestyle" >l'artiste est un interprète de la vie. - Pablo Picasso </p>
+<img id="img1"src="https://cdn.britannica.com/78/43678-050-F4DC8D93/Starry-Night-canvas-Vincent-van-Gogh-New-1889.jpg"/>
+<br/>
+<p>
+    <!-- EventBinding  -->
+{{number}} <br/>
+<button (click)="incr()"> incrementer </button>
+<button (click)="dec()"> dencrementer </button>
+</p>
+
+
+
+<h2 [style]="stylish">COLOR {{nomcolor}}</h2>
+<button (click)="toyellow()"> change_to_yellow </button>
+<button (click)="topink()">  change_to_pink </button>
+
+
+<p [style.display]="disp"> GOOD MORNING  </p>
+<button (click)="affiche()"> afficher</button>
+<button (click)="nonaffiche()"> hidden</button>
+
+<!--to way binding-->
+<p style="color:#33FF33; font-size: 30px;"> Hello {{personne.lastname}} {{personne.name}}</p>
+<p>
+nom : <input type="text" [(ngModel)]="personne.lastname" >
+prenom: <input type="text" [(ngModel)]="personne.name">
+age : <input type="text" [(ngModel)]="personne.age" >
+
+</p>
+<!--dierctives-->
+<!--si-->
+<!--indefineded  null  false : n'affiche pas-->
+
+<p *ngIf="x===y">  s'affiche IF1 </p>
+<p *ngIf="x===w">  s'affiche IF2 </p>
+<p *ngIf="verif">  s'affiche IF3 </p>
+<p>--------------------------------</p>
+
+<!--for-->
+<div *ngFor="let item of tabpays ; index as i">
+  <p>  {{i+1}}  {{item}}  </p>
+</div>
+
+<!--Switch-->
+
+<input type="number" [(ngModel)]="num">
+<!--or -->
+<div [ngSwitch]="num" >
+<p *ngSwitchCase="1">  one  </p>
+<p *ngSwitchCase="2">  two  </p>
+<p *ngSwitchCase="3">  three  </p>
+<p *ngSwitchCase="4">  four  </p>
+</div>
+ 
+ <!--Class/css-->
+ <p [ngClass]="'classy1'" > Class CSS1  </p>
+  <!--Class/css or APPEL par variable TS-->
+ <p [ngClass]="cl1" > Class CSS2  </p>
+
+ <!-- ng Style-->
+ <p [ngStyle]="{'color':st1 ,'font-size':st2}" > phrase de ng STyle  </p>
+
+ <!--Pipes-->
+ {{animal | uppercase }}
+ <p> {{dt1 | date: 'yyyy-MM-dd'}}nnnnn </p>
+
+ <!--Routing Navigate-->
+<div>
+  <button (click)="gotoview()"> Go to View</button>
+  <!--Routing Navigate par id -->
+  <input type="text"[(ngModel)]="personne.name">
+    <button (click)="gotodetails()"> Go to details</button>
+</div>
+
+
+  
+  
+  
+  
+
+

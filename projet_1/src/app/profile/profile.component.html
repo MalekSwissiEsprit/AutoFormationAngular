@@ -1,0 +1,69 @@
+<p>profile works!</p>
+
+<!--template driven Form-->
+<form #f="ngForm" (ngsubmit)="add(f)" >
+
+<input type="text"  name="prenom"  required ngModel #prenom="ngModel"> 
+<br>
+<div class="alert alert-danger" role="alert"  *ngIf="prenom.errors?.['required'] && prenom.touched">
+ prenom required
+  </div>
+<br>
+<input type="text"  name="nom"   required  ngModel #nom="ngModel">
+<br>
+<div class="alert alert-danger" role="alert" *ngIf="nom.errors?.['required'] && nom.touched">
+   nom required
+  </div>
+<br>
+<input type="number" name="age"  required ngModel #age="ngModel" >
+<br>
+<div class="alert alert-danger" role="alert"  *ngIf="age.errors?.['required'] && age.touched"  >
+    age required
+  </div>
+
+<button type="submit" [disabled]="f.invalid"> Add </button>
+</form>
+
+
+<!--form reactive-->
+<!--formGroup | formControl-->
+<form [formGroup]="forma" (ngsubmit)="envoyer()">
+<input type="text" placeholder="donner votre nom"  formControlName="nom" required>
+<input type="text" placeholder="donner votre age" formControlName="age" required>
+<button type="submit" [disabled]="forma.invalid" > envoyer</button>
+</form>
+
+<!--formGroup | formControl | formBuilder -->
+<form [formGroup]="myform" (ngsubmit)="envoyer()">
+
+  <input type="text" placeholder="name" formControlName="name" required>
+  <div  class="alert alert-danger" role="alert"  *ngIf="myform.get('name').touched && myform.get('name').hasError('required')" >
+    votre name est required 
+  </div>
+  <div  class="alert alert-danger" role="alert"  *ngIf="myform.get('name').hasError('minlength')" >
+    vous dever enter minimum caractère 
+  </div>
+
+
+  <input type="text" placeholder="lastname" formControlName="lastname" required>
+  <div  class="alert alert-danger" role="alert"    *ngIf="lastname.touched && lastname.hasError('required')">
+    votre lastname est required 
+  </div>
+  <div  class="alert alert-danger" role="alert"  *ngIf="lastname.hasError('maxlength')" >
+    vous dèpassez 8 caractère 
+  </div>
+
+
+  <input type="email" placeholder="your email" formControlName="mail"  required>
+  <div  class="alert alert-danger" role="alert"   *ngIf="email.touched && email.hasError('required')" >
+    votre email est required 
+  </div>
+  <div  class="alert alert-danger" role="alert"  *ngIf="email.hasError('email')" >
+   error format email
+  </div>
+
+
+
+     <!-- form Reactive  from array & dynamic -->
+     
+

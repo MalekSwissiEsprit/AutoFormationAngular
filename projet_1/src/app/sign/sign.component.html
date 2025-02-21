@@ -1,0 +1,16 @@
+<form [formGroup]="fw1" (ngSubmit)="signup()">
+    <input id="input1" type="email"  placeholder="votre email" required [(ngModel)]="nommail" formControlName="mail" >
+    <div class="alert alert-danger" role="alert" *ngIf="mail.errors?.email ">
+         format incorrecte 
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="mail.invalid && mail.touched " >
+        email vide
+  </div>
+    <br>
+    <input type="password" placeholder="votre mot de passe " required [(ngModel)]="passvalue" formControlName="pass">
+    <div class="alert alert-danger" role="alert" *ngIf="pass.invalid && pass.touched">
+          mot de passe ivide
+    </div>
+
+    <button type="submit">Sign in</button>
+</form>
